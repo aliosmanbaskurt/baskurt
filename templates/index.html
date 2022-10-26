@@ -1,0 +1,183 @@
+{% extends 'base.html' %} {% block content %}
+{% load static %}
+
+
+
+<div class="container-fluid bg-dark px-4 py-5 my-0 text-center hero">
+  <img class="d-block mx-auto mb-4" src="{% static 'programmer.png' %}" alt="" width="72" height="72">
+  <h1 class="display-5 fw-bold text-white">Bilişim Teknolojileri</h1>
+  <div class="col-lg-6 mx-auto text-white">
+    <p class="lead mb-4">Web Tasarım, Bilgisayar Bilimi ve Robotik Kodlamaya Dair İçerikler</p>
+    <div class="d-grid gap-2 d-sm-flex justify-content-sm-center">
+      <a href="#icerik" class="btn btn-outline-primary btn-lg px-4 gap-3 d-none d-md-block">Neler Var?</a>
+      <a href="#kategori" class="btn btn-outline-info btn-lg px-4 d-none d-md-block">Örnekler</a>
+    </div>
+  </div>
+</div> 
+
+
+<section id="kategori">
+  <div class="container">
+    <div class="row ">
+      <div class="col mx-auto text-center">
+        <span class="text-primary display-6"></i> Örnekler</span>
+        <h1 class="display-6"><i class="bi bi-list-task"></i> Uygulama Örnekleri</h1>
+
+      </div>
+    </div>
+    <div class="row gx-4 gy-4 justify-content-center">
+
+
+      
+
+      <div class="row row-cols-1 row-cols-xl-4 row-cols-md-2 row-cols-sm-2 g-4">
+      {% for course in courses%}
+        <div class="col-12 ">
+          <div class="card h-100">
+            <img src="{{ course.image.url }}" class="card-img-top img-fluid"  alt="...">
+            <div class="card-body"> <i class="{{ course.category.cat_icon }}"></i>
+              <a href="{% url 'course_detail' course.category.slug course.id %}"
+              class="card-title text-dark fw-bolder text-decoration-none stretched-link" style="font-size:19px;">{{course.name}}</a>
+             
+              <p class="card-text mt-2" style="text-align:justify">{{course.description|truncatechars:200}}</p>
+
+
+            </div>
+          
+            <div class="card-footer">
+              <small class="text-muted"> <i class="bi bi-cloud-arrow-up"></i> {{course.date|date:"d M Y"}} </small>
+            </div>
+          </div>
+        </div>
+        {% endfor %}
+      </div>   
+    </div>
+
+  </div>
+
+
+
+</section>
+<hr>
+<section id="icerik">
+  <div class="container-xl d-none d-sm-block ">
+    
+    <br>
+    <br>
+    <div class="row">
+      <div class="col mx-auto text-center">
+        <span class="text-primary display-6"></i> İçerik</span>
+        <h1 class="display-6"><i class="bi bi-list-task"></i> İçeriklerde Neler Var?</h1>
+
+      </div>
+    </div>
+
+
+    <div class="container col-xxl-12 ">
+      <div class="row flex-lg-row-reverse align-items-center g-5 py-5">
+        <div class="col-12 col-sm-12 col-lg-6  ">
+          <img src="../media/courses/2022/10/19/ARDUINO-2.png" class="d-block mx-lg-auto mx-sm-auto img-fluid rounded-3 " alt="Bootstrap Themes" width="700" height="500" loading="lazy">
+        </div>
+        <div class="col-lg-6 align-items-center">
+          <h1 class="display-5 fw-bold lh-1 mb-3 mx-sm-auto text-justify"><i class="bi bi-robot text-dark me-2"></i>  Robotik Kodlama</h1>
+          <p class="lead " style="text-align:justify"> Lorem ipsum dolor sit amet consectetur adipisicing elit. Ea consequuntur voluptates beatae sunt delectus aperiam veniam asperiores. Itaque exercitationem vero ipsa asperiores illum veniam eius nisi, nesciunt ab doloribus nobis, architecto a natus! Harum laborum quisquam in et beatae, aperiam velit possimus dolore iusto, nostrum soluta iste laudantium, voluptatibus optio.</p>
+          
+        </div>
+      </div>
+    </div> 
+
+    <div class="container col-xxl-12 ">
+      <div class="row flex-lg-row align-items-center g-5 py-5">
+        <div class="col-12 col-sm-12 col-lg-6  ">
+          <img src="../media/courses/2022/10/19/ARDUINO-4.png" class="d-block mx-lg-auto mx-sm-auto img-fluid rounded-3 " alt="Bootstrap Themes" width="700" height="500" loading="lazy">
+        </div>
+        <div class="col-lg-6 align-items-center">
+          <h1 class="display-5 fw-bold lh-1 mb-3 mx-sm-auto text-justify"><i class="bi bi-robot text-dark me-2"></i>  Bilgisayar Bilimi</h1>
+          <p class="lead " style="text-align:justify"> Lorem ipsum dolor sit amet consectetur adipisicing elit. Ea consequuntur voluptates beatae sunt delectus aperiam veniam asperiores. Itaque exercitationem vero ipsa asperiores illum veniam eius nisi, nesciunt ab doloribus nobis, architecto a natus! Harum laborum quisquam in et beatae, aperiam velit possimus dolore iusto, nostrum soluta iste laudantium, voluptatibus optio.</p>
+          
+        </div>
+      </div>
+    </div> 
+
+    <div class="container col-xxl-12 ">
+      <div class="row flex-lg-row-reverse align-items-center g-5 py-5">
+        <div class="col-12 col-sm-12 col-lg-6  ">
+          <img src="../media/courses/2022/10/19/office.png" class="d-block mx-lg-auto mx-sm-auto img-fluid rounded-3 " alt="Bootstrap Themes" width="700" height="500" loading="lazy">
+        </div>
+        <div class="col-lg-6 align-items-center">
+          <h1 class="display-5 fw-bold lh-1 mb-3 mx-sm-auto text-justify"><i class="bi bi-robot text-dark me-2"></i>  Ofis Programları</h1>
+          <p class="lead " style="text-align:justify"> Lorem ipsum dolor sit amet consectetur adipisicing elit. Ea consequuntur voluptates beatae sunt delectus aperiam veniam asperiores. Itaque exercitationem vero ipsa asperiores illum veniam eius nisi, nesciunt ab doloribus nobis, architecto a natus! Harum laborum quisquam in et beatae, aperiam velit possimus dolore iusto, nostrum soluta iste laudantium, voluptatibus optio.</p>
+          
+        </div>
+      </div>
+    </div> 
+
+
+<!-- {% for list in lists %}
+     <div class="container col-xxl-12 ">
+      <div class="row flex-lg-row-reverse align-items-center g-5 py-5">
+        <div class="col-12 col-sm-12 col-lg-6  ">
+          <img src="{{ list.image.url }}" class="d-block mx-lg-auto mx-sm-auto img-fluid rounded-3 " alt="Bootstrap Themes" width="700" height="500" loading="lazy">
+        </div>
+       
+        <div class="col-lg-6 align-items-center">
+          <h1 class="display-5 fw-bold lh-1 mb-3 mx-sm-auto text-justify"><i class="{{course.icon}}"></i>  {{ list.name }}</h1>
+          <p class="lead " style="text-align:justify"> {{ list.description|truncatechars:200 }}</p>
+          <div class="d-grid gap-2 d-md-flex justify-content-md-start">
+            <button type="button" class="btn btn-outline-primary btn-lg px-4 me-md-2 " data-bs-toggle="tooltip" data-bs-placement="right"
+            data-bs-custom-class="custom-tooltip"
+            data-bs-title="İçerik aktif değil">İncele</button>
+          </div>
+        </div>
+
+      </div>
+    </div> 
+
+<hr>
+{% endfor %} -->
+    <!-- <div class="container col-xxl-12">
+      <div class="row flex-lg-row align-items-center g-5 py-5">
+        <div class="col-12 col-sm-12 col-lg-6  ">
+          <img src="https://picsum.photos/id/0/900/800" class="d-block mx-lg-auto mx-sm-auto img-fluid rounded-3 " alt="Bootstrap Themes" width="700" height="500" loading="lazy">
+        </div>
+        <div class="col-lg-6 align-items-center ">
+          <h1 class="display-5 fw-bold lh-1 mb-3 mx-sm-auto"><i class="bi bi-file-earmark-word-fill"></i> Ofis Programları</h1>
+          <p class="lead" style="text-align:justify">Lorem ipsum dolor sit amet consectetur adipisicing elit. Nihil, deserunt architecto. Laudantium adipisci doloribus at eum consequuntur, natus necessitatibus accusamus totam nam laboriosam, fuga quaerat repellendus assumenda omnis recusandae enim ab nihil? Eos blanditiis odit libero. Magnam sunt cum eaque nam voluptatem officiis accusantium, sit, velit excepturi delectus doloribus sapiente eveniet totam libero quisquam adipisci et itaque voluptas. Sequi, sint.</p>
+          <div class="d-grid gap-2 d-md-flex justify-content-md-start">
+            <button type="button" class="btn btn-outline-primary btn-lg px-4 me-md-2" data-bs-toggle="tooltip" data-bs-placement="right"
+            data-bs-custom-class="custom-tooltip"
+            data-bs-title="İçerik aktif değil">İncele</button>
+            
+          </div>
+        </div>
+      </div>
+    </div> 
+
+    <hr>
+
+    <div class="container col-xxl-12">
+      <div class="row flex-lg-row-reverse align-items-center g-5 py-5">
+        <div class="col-12 col-sm-12 col-lg-6  ">
+          <img src="https://picsum.photos/id/1/900/800" class="d-block mx-lg-auto mx-sm-auto img-fluid rounded-3 " alt="Bootstrap Themes" width="700" height="500" loading="lazy">
+        </div>
+        <div class="col-lg-6 align-items-center">
+          <h1 class="display-5 fw-bold lh-1 mb-3 mx-sm-auto"><i class="bi bi-pc-display-horizontal"></i> Bilgisayar Bilimi</h1>
+          <p class="lead" style="text-align:justify">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Dolore eum ex minima culpa voluptate inventore eveniet fugit sint quo explicabo dolorem minus, molestias qui vel excepturi provident. Commodi, aspernatur laborum?</p>
+          <div class="d-grid gap-2 d-md-flex justify-content-md-start">
+            <button type="button" class="btn btn-outline-primary btn-lg px-4 me-md-2" >İncele</button>
+
+            
+            
+          </div>
+        </div>
+      </div>
+    </div>  -->
+
+</section>
+
+
+
+{% endblock %}
+
+
+

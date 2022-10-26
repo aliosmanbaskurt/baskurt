@@ -1,0 +1,17 @@
+{% extends 'base.html' %} {% load static %} {% block content %}
+
+
+<div class="container-fluid bg-dark px-4 py-5 my-0 text-center hero">
+    <img class="d-block mx-auto mb-4" src="{% static 'student.png' %}" alt="" width="220" height="">
+    <h1 class="display-5 fw-bold text-white">{{user.first_name}} {{user.last_name}}</h1>
+    <div class="col-lg-6 mx-auto text-white">
+      <p class="lead mb-4">10 AMP SINIFI</p>
+      <div class="d-grid gap-2 d-sm-flex justify-content-sm-center">
+        <a href="#icerik" class="btn btn-outline-primary btn-lg px-4 gap-3 d-none d-md-block">Neler Var?</a>
+        <a href="#kategori" class="btn btn-outline-info btn-lg px-4 d-none d-md-block">Örnekler</a>
+      </div>
+    </div>
+  </div> 
+
+
+{%endblock%}

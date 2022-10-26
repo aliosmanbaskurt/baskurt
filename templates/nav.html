@@ -1,0 +1,76 @@
+{% load static %}
+<nav class="navbar navbar-expand-lg sticky-top navbar-dark bg-dark p-1 mt-0">
+  <div class="container-xl">
+    <a class="navbar-brand h1 ms-3" href="{% url 'index' %}"><i class="bx bx-exclude" style="font-size: 30px"></i>Ali
+      Osman BAŞKURT</a>
+    <span class="navbar-text d-none d-xl-block">
+      Bilişim Teknolojileri Öğretmeni
+    </span>
+    <button class="navbar-toggler bg-dark" type="button" data-bs-toggle="collapse"
+      data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+      aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav mb-2 me-3 mb-lg-0 ms-auto">
+        <li class="nav-item  {% if '/' == request.path %} active {% endif %}">
+          <a class="nav-link text-white" href="{% url 'index' %}">Anasayfa</a>
+        </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle text-white" href="{% url 'courses' %}" id="navbarDropdownMenuLink" role="button"
+            data-bs-toggle="dropdown" aria-expanded="false">Dersler</a>
+          <ul class="dropdown-menu mt-0 ps-0 bg-dark" aria-labelledby="navbarDropdownMenuLink">
+            {% for cat in cats %}
+            <li>
+              <a class="dropdown-item" href="{% url 'courses_by_category' cat.slug %}"><i class="{{cat.cat_icon}}"></i> {{ cat.name }}</a>
+            </li>
+            {% endfor %}
+
+            <!-- <li>
+              <a class="dropdown-item" href="#"><i class="bi bi-filetype-html me-2"></i> Web Tasarım</a>
+            </li>
+            <li>
+              <a class="dropdown-item" href="#"><i class="bi bi-robot me-2"></i> Robotik Kodlama</a>
+            </li>
+            <li>
+              <a class="dropdown-item" href="#"><i class="bi bi-braces-asterisk me-2"></i> Programlama</a>
+            </li> -->
+          </ul>
+        </li>
+
+        {% if user.is_authenticated%}
+        <li class="nav-item">
+          <a class="nav-link text-white" href="{% url 'courses' %}">Sınavlar</a>
+        </li>
+        {%endif%}
+        <li class="nav-item">
+          <a class="nav-link text-white" href="">Ödevler</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link text-white" href="{% url 'contact' %}">İletişim</a>
+        </li>
+      </ul>
+      <div class="text-left">
+        {% if user.is_authenticated %}
+        <a type="button" class="btn btn-primary  text-white me-2 px-2" href="{% url 'dashboard' %}">{{user.first_name}}
+        </a>
+        <a type="button" class="btn btn-danger  text-white me-2" href="javascript:{document.getElementById('logout').submit()}"><i class="fa-solid fa-circle-xmark"></i>
+        Çıkış</a>
+        <form action="{% url 'logout' %}" method="POST" id="logout">
+          {% csrf_token %}
+          <input type="hidden" >
+        </form>
+        
+        {% else%}
+
+        <a type="button" class="btn btn-success  text-white me-2" href="{% url 'login' %}"><i class="fa-solid fa-right-to-bracket"></i>
+        Giriş</a>
+      
+        {% endif %}
+      </div>
+    </div>
+  </div>
+</nav>
+
+
